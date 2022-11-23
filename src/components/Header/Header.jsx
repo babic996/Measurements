@@ -1,24 +1,25 @@
 import React from 'react'
 import './Header.scss'
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
-        <a href="/" class="logo">From hype to reality</a>
+        <a href="/" class="logo">from HYPE to REALITY</a>
         <input type="checkbox" class="checkBtn" />
         <ol>
-            <a href="/#">
+            <Link to="/">
                 <li>Senzor 1</li>
-            </a>
-            <a href="/#">
-                <li>Senzor 2</li>
-            </a>
-            <a href="/#">
-                <li>Senzor 3</li>
-            </a>
-            <a href="/#">
-                <li>Senzor 4</li>
-            </a>
+            </Link>
+            <Link to="/sensor2">
+                <li>sensor2</li>
+            </Link>
+            <Link to="/sensor3">
+                <li>sensor3</li>
+            </Link>
+            <Link to="/sensor4">
+                <li>sensor4</li>
+            </Link>
         </ol>
     </header>
   )

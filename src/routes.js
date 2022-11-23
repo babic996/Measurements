@@ -2,6 +2,7 @@ import Sensor1 from './pages/Sensor1';
 import Sensor2 from './pages/Sensor2';
 import Sensor3 from './pages/Sensor3';
 import Sensor4 from './pages/Sensor4';
+import NotFoundPage from './pages/NotFoundPage';
 
 const routes = [
   {
@@ -19,7 +20,11 @@ const routes = [
   {
     path: "/sensor4",
     component: <Sensor4/>,
-  }
+  },
+  {
+		path: '*',
+		component: <NotFoundPage />,
+	},
 ];
 
 export default routes;
