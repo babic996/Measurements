@@ -6,6 +6,7 @@ import {
   Routes,
 } from "react-router-dom";
 import routes from './routes';
+import MeasurementTable from './components/Table/Table';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <div className="App">
         <h1>Welcome</h1>
+        <MeasurementTable></MeasurementTable>
         <Routes>
             {routes.map((route, i) => (
               <Route
