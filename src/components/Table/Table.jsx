@@ -39,6 +39,7 @@ const MeasurementTable = ({ sensorDataLast10Changes, sensorUnits }) => {
         pagination={false}
         className="table"
         rowKey="no"
+        scroll={{ x: 700 }}
       />
     </div>
   );
