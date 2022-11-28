@@ -1,11 +1,14 @@
 import React from 'react'
 import './Footer.scss'
+import { Row } from 'antd'
 
 const Footer = () => {
   return (
-    <footer>
-        <p> Copyright © 2022 - All rights Reserved - Designed by Lanaco </p>
-    </footer>
+    <Row style={{marginTop: 150}}>
+      <footer>
+          <p> Copyright © 2022 - All rights Reserved - Designed by Lanaco </p>
+      </footer>
+    </Row>
   )
 }
 

@@ -1,28 +1,38 @@
-import React from 'react'
-import './Header.scss'
+import React, { useEffect, useState } from "react";
+import "./Header.scss";
 import { Link } from "react-router-dom";
+import { useAllSensors } from "../../hooks/services/useSensor";
+import { Request } from '../../util/useAxios'
 
 const Header = () => {
-  return (
-    <header>
-        <a href="/" class="logo">from HYPE to REALITY</a>
-        <input type="checkbox" class="checkBtn" />
-        <ol>
-            <Link to="/">
-                <li>Senzor 1</li>
-            </Link>
-            <Link to="/sensor2">
-                <li>sensor2</li>
-            </Link>
-            <Link to="/sensor3">
-                <li>sensor3</li>
-            </Link>
-            <Link to="/sensor4">
-                <li>sensor4</li>
-            </Link>
-        </ol>
-    </header>
-  )
+  const [sensors, setSensors] = useState([]);
+
+  useEffect(() => {
+    getAllSensors().then(result=>setSensors(result))
+  }, []);
+
+  const getAllSensors = async () => {
+    const request = Request();
+
+    const result = await request({ url: `/sensor/find-all`, method: 'get' });
+    return result.data;
 }
 
-export default Header
+  return (
+    <header>
+      <a href="/" className="logo">
+        from HYPE to REALITY
+      </a>
+      <input type="checkbox" className="checkBtn" />
+      <ol>
+        {sensors?.map((sensor) => (
+          <Link to={`/sensor/${sensor?.sensorId}`} key={sensor?.sensorId}>
+            <li key={sensor?.sensorId}>{sensor?.sensorName}</li>
+          </Link>
+        ))}
+      </ol>
+    </header>
+  );
+};
+
+export default Header;

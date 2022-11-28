@@ -1,0 +1,1 @@
+export const DEFAULT_SERVER="http://localhost:8088";
