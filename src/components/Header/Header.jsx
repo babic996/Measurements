@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
-import { useAllSensors } from "../../hooks/services/useSensor";
 import { Request } from '../../util/useAxios'
 
 const Header = () => {

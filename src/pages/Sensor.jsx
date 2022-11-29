@@ -13,15 +13,29 @@ const Sensor = () => {
   const [sensor, setSensor] = useState();
 
   useEffect(() => {
-    getSensorLastChange(sensorId).then((result) => {
-      setSensorData(result);
-    });
-    getSensorLast10Change(sensorId).then((result) => {
-      setSensorDataLast10Changes(result);
-    });
-    getSensor(sensorId).then((result) => {
-      setSensor(result);
-    });
+    if (sensorId) {
+      getSensorLastChange(sensorId).then((result) => {
+        setSensorData(result);
+      });
+      getSensorLast10Change(sensorId).then((result) => {
+        setSensorDataLast10Changes(result);
+      });
+      getSensor(sensorId).then((result) => {
+        setSensor(result);
+      });
+    } else {
+      getAllSensors().then((result) => {
+        getSensorLastChange(result[0]?.sensorId).then((result) => {
+          setSensorData(result);
+        });
+        getSensorLast10Change(result[0]?.sensorId).then((result) => {
+          setSensorDataLast10Changes(result);
+        });
+        getSensor(result[0]?.sensorId).then((result) => {
+          setSensor(result);
+        });
+      });
+    }
   }, [sensorId]);
 
   const getSensorLastChange = async (id) => {
@@ -54,6 +68,13 @@ const Sensor = () => {
     return result.data;
   };
 
+  const getAllSensors = async () => {
+    const request = Request();
+
+    const result = await request({ url: `/sensor/find-all`, method: "get" });
+    return result.data;
+  };
+
   return (
     <>
       <Row
@@ -73,7 +94,7 @@ const Sensor = () => {
                     ? 24
                     : sensorData?.length === 2
                     ? 12
-                    : sensorData?.length ===3
+                    : sensorData?.length === 3
                     ? 8
                     : sensorData?.length === 4
                     ? 6

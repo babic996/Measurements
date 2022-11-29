@@ -3,7 +3,6 @@ import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import routes from "./routes";
 import Footer from "./components/Footer/Footer";
-import { Col, Row } from "antd";
 
 function App() {
   return (
