@@ -49,8 +49,8 @@ const Sensor = () => {
         gutter={[16, 16]}
         style={{ marginLeft: 30, marginTop: 30, marginRight: 30 }}
       >
-        {sensorData.length > 0
-          ? sensorData.map((lastChange) => (
+        {sensorData?.length > 0
+          ? sensorData?.map((lastChange) => (
               <Col
                 key={lastChange?.measuringUnitId}
                 xs={24}
