@@ -8,15 +8,18 @@ import { getSensorLastChange } from "../hooks/services/useSensor";
 import { getSensorLast10Change } from "../hooks/services/useSensor";
 import { getAllSensors } from "../hooks/services/useSensor";
 import { getSensor } from "../hooks/services/useSensor";
+import { useRouteContext } from "../hooks/context/routeContext";
 
 const Sensor = () => {
   const { sensorId } = useParams();
   const [sensorData, setSensorData] = useState([]);
   const [sensorDataLast10Changes, setSensorDataLast10Changes] = useState();
   const [sensor, setSensor] = useState();
+  const { setParametar } = useRouteContext();
 
   useEffect(() => {
     if (sensorId) {
+      setParametar(sensorId);
       getSensorLastChange(sensorId).then((result) => {
         setSensorData(result);
       });

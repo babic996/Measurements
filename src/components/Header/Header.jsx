@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { Request } from '../../util/useAxios'
+import { useRouteContext } from "../../hooks/context/routeContext";
 
 const Header = () => {
   const [sensors, setSensors] = useState([]);
+  const { parametar } = useRouteContext();
 
   useEffect(() => {
     getAllSensors().then(result=>setSensors(result))
@@ -26,7 +28,7 @@ const Header = () => {
       <ol>
         {sensors?.map((sensor) => (
           <Link to={`/sensor/${sensor?.sensorId}`} key={sensor?.sensorId}>
-            <li key={sensor?.sensorId}>{sensor?.sensorName}</li>
+            <li className={parametar == sensor?.sensorId ? "active" : ""} key={sensor?.sensorId}>{sensor?.sensorName}</li>
           </Link>
         ))}
       </ol>

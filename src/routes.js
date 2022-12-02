@@ -4,7 +4,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 const routes = [
   {
     path: '/sensor/:sensorId',
-    component: <Sensor />,
+    component:  <Sensor />,
   },
   {
     path: '/',
